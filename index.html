@@ -378,6 +378,9 @@
                     
                     <form id="contactForm" class="space-y-6" action="https://formspree.io/f/xkjovlrn" method="POST">
                         
+                        <!-- 防垃圾机器人提交的隐形蜜罐 (Honeypot) -->
+                        <input type="text" name="_gotcha" style="display:none" />
+                        
                         <!-- Contact Info -->
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
