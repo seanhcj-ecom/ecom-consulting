@@ -296,27 +296,27 @@
                         <p class="text-slate-400">请花 1 分钟填写简表。为保证服务质量，每月仅接 3-5 个诊断案子。</p>
                     </div>
                     
-                    <form id="contactForm" class="space-y-6">
+                    <form id="contactForm" class="space-y-6" action="https://formspree.io/f/xkjovlrn" method="POST">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-semibold text-slate-300 mb-2">您的称呼 / 职位</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="e.g. 陈先生，创始人">
+                                <input type="text" id="name" name="Client Name" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="e.g. 陈先生，创始人">
                             </div>
 
                             <div>
                                 <label for="whatsapp" class="block text-sm font-semibold text-slate-300 mb-2">WhatsApp 号码</label>
-                                <input type="tel" id="whatsapp" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="+65 8xxx xxxx">
+                                <input type="tel" id="whatsapp" name="WhatsApp" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="+65 8xxx xxxx">
                             </div>
                         </div>
 
                         <div>
                             <label for="storeUrl" class="block text-sm font-semibold text-slate-300 mb-2">核心店铺链接</label>
-                            <input type="url" id="storeUrl" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="https://shopee.sg/yourstore">
+                            <input type="url" id="storeUrl" name="Store URL" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="https://shopee.sg/yourstore">
                         </div>
 
                         <div>
                             <label for="challenge" class="block text-sm font-semibold text-slate-300 mb-2">目前急需解决的核心痛点</label>
-                            <select id="challenge" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white focus:ring-0 transition appearance-none">
+                            <select id="challenge" name="Main Challenge" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white focus:ring-0 transition appearance-none">
                                 <option value="" disabled selected class="text-slate-500">请选择最大瓶颈...</option>
                                 <option value="CR_Traffic" class="text-black">转化率低迷，流量无法变现</option>
                                 <option value="Ads_ROI" class="text-black">广告花费高昂，ROI 持续亏损</option>
@@ -374,29 +374,63 @@
             }
         });
 
-        // Form submission handling (No alert modals used for better UX)
+        // 优雅处理表单提交 (AJAX 无刷新提交到 Formspree)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            
-            // Loading state
-            submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-navy-950 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> 提交中...';
-            submitBtn.disabled = true;
+            e.preventDefault(); // 阻止表单默认的跳转行为
 
-            // Simulate network request (In real use, connect to Formspree, Make, or Zapier here)
-            setTimeout(() => {
-                const formContainer = document.getElementById('lead-form-container');
-                const successMessage = document.getElementById('success-message');
-                
-                // Hide form, show success with smooth transition
-                formContainer.style.display = 'none';
-                successMessage.classList.remove('hidden');
-                
-                // Scroll to message
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 800);
+            // 获取表单元素和数据
+            const form = e.target;
+            const data = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            // 提交时改变按钮状态，防止重复点击
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = '正在提交...';
+            submitButton.disabled = true;
+            submitButton.classList.add('opacity-75', 'cursor-not-allowed');
+
+            // 使用 fetch API 将数据发送到 Formspree
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json' // 告诉 Formspree 我们希望返回 JSON，这样就不会跳转
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 提交成功：隐藏表单，显示成功提示
+                    const formContainer = document.getElementById('lead-form-container');
+                    const successMessage = document.getElementById('success-message');
+                    
+                    formContainer.style.display = 'none';
+                    successMessage.classList.remove('hidden');
+                    
+                    // 滚动到提示信息
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // 可选：清空表单（以防客户刷新页面后仍有数据）
+                    form.reset();
+                } else {
+                    // 处理 Formspree 返回的错误
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! 提交时遇到了问题，请稍后再试。");
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                alert("Oops! 提交时遇到了网络问题，请检查您的连接。");
+            })
+            .finally(() => {
+                // 恢复按钮状态（如果是错误情况，或者客户返回上一页）
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+                submitButton.classList.remove('opacity-75', 'cursor-not-allowed');
+            });
         });
     </script>
 </body>
