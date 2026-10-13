@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth">
+<!-- 默认语言设为英文 -->
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>独立电商增长顾问 | 专家级店铺全面诊断</title>
+    <title>EcomGrowth | Independent E-Commerce Strategy Consultant</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+SC:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+SC:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -36,87 +37,114 @@
     </script>
     
     <style>
-        /* Smooth form inputs and animations */
-        input:focus, select:focus { outline: none; box-shadow: 0 0 0 2px #eab308; border-color: #eab308; }
+        input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 2px #eab308; border-color: #eab308; }
         .fade-in { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .slide-up { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Subtle background grid pattern for tech feel */
         .bg-grid-pattern {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
+
+        /* Language Toggle Logic - Pure CSS hiding */
+        html[lang="en"] .lang-zh { display: none !important; }
+        html[lang="zh"] .lang-en { display: none !important; }
     </style>
 </head>
 <body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-gold-500 selection:text-navy-900">
 
     <header class="fixed w-full bg-navy-950/90 backdrop-blur-md border-b border-white/10 z-50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold text-white tracking-tight">
+            <div class="text-2xl font-black text-white tracking-tight">
                 <span class="text-gold-500">Ecom</span>Growth.
             </div>
-            <div class="flex items-center gap-6">
-                <a href="#why-me" class="hidden md:block text-sm font-medium text-slate-300 hover:text-white transition">实力背书</a>
-                <a href="#services" class="hidden md:block text-sm font-medium text-slate-300 hover:text-white transition">诊断方案</a>
-                <a href="#audit-form" class="bg-gold-500 text-navy-950 px-5 py-2.5 rounded-sm text-sm font-bold hover:bg-gold-400 transition shadow-[0_0_15px_rgba(234,179,8,0.3)]">
-                    预约咨询
+            <div class="flex items-center gap-4 md:gap-6">
+                <a href="#why-me" class="hidden md:block text-sm font-medium text-slate-300 hover:text-white transition">
+                    <span class="lang-en">Why Me</span><span class="lang-zh">实战底气</span>
+                </a>
+                <a href="#services" class="hidden md:block text-sm font-medium text-slate-300 hover:text-white transition">
+                    <span class="lang-en">Services</span><span class="lang-zh">诊断方案</span>
+                </a>
+                
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-2 border-l border-slate-700 pl-4 md:pl-6 ml-2">
+                    <button onclick="switchLang('en')" id="btn-en" class="text-sm font-bold text-gold-500 hover:text-gold-400 transition">EN</button>
+                    <span class="text-slate-600 text-sm">/</span>
+                    <button onclick="switchLang('zh')" id="btn-zh" class="text-sm font-medium text-slate-400 hover:text-white transition">中文</button>
+                </div>
+
+                <a href="#audit-form" class="hidden sm:inline-block bg-gold-500 text-navy-950 px-5 py-2 rounded-sm text-sm font-bold hover:bg-gold-400 transition shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                    <span class="lang-en">Book Audit</span><span class="lang-zh">预约咨询</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <section class="relative bg-navy-950 text-white pt-40 pb-24 lg:pt-56 lg:pb-40 overflow-hidden bg-grid-pattern">
-        <!-- Abstract glowing orb in background -->
+    <section class="relative bg-navy-950 text-white pt-36 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-grid-pattern">
         <div class="absolute top-0 right-0 w-96 h-96 bg-gold-600/20 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute bottom-0 left-10 w-72 h-72 bg-blue-600/20 rounded-full blur-[100px] pointer-events-none"></div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center lg:text-left lg:flex lg:items-center lg:justify-between">
-            <div class="lg:w-3/5 space-y-8 slide-up">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gold-400 text-xs sm:text-sm font-semibold tracking-wide mb-2">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 lg:flex lg:items-center lg:justify-between gap-12">
+            <div class="lg:w-[55%] space-y-8 slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gold-400 text-xs sm:text-sm font-semibold tracking-wide">
                     <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    现开放 3 个本月咨询名额
+                    <span class="lang-en">Only 3 consultation slots open this month</span>
+                    <span class="lang-zh">现开放 3 个本月咨询名额</span>
                 </div>
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
-                    你的外脑：<br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">独立电商增长顾问</span>
+                <h1 class="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.15] tracking-tight">
+                    <span class="lang-en">Independent E-Commerce <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Strategy Consultant</span></span>
+                    <span class="lang-zh">突破增长天花板的：<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">独立电商战略顾问</span></span>
                 </h1>
                 
-                <p class="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
-                    4 年时间，将电商大盘从 120 万做到 <strong class="text-white font-semibold">630 万新币</strong>。<br class="hidden sm:block"/>用前头部旗舰店操盘手的实战经验，为你打破 Shopee / Lazada / TikTok Shop 的流量与转化瓶颈。
+                <p class="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl font-light">
+                    <span class="lang-en">
+                        Scaled an e-commerce portfolio from <strong class="text-white font-semibold">$630K</strong> to <strong class="text-white font-semibold">$6.3M SGD</strong> in 4 years (<strong class="text-gold-400 font-bold">10X Growth</strong>). Leveraging hands-on experience as an ex-Top Flagship Store Operator, I help you unlock omnichannel traffic and break sales bottlenecks across Shopee, Lazada, TikTok Shop, and Shopify.
+                    </span>
+                    <span class="lang-zh">
+                        4 年时间，将电商大盘从 <strong class="text-white font-semibold">63 万</strong>做到 <strong class="text-white font-semibold">630 万新币</strong>（实现 <strong class="text-gold-400 font-bold">10 倍跨越</strong>）。<br class="hidden sm:block"/>
+                        凭借前头部旗舰店操盘手的实战经验，为你打通 Shopee / Lazada / TikTok Shop / Shopify 的全域流量，打破销售瓶颈。
+                    </span>
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
-                    <a href="#audit-form" class="group bg-gold-500 hover:bg-gold-400 text-navy-950 px-8 py-4 rounded-sm font-bold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] flex items-center justify-center gap-2">
-                        申请店铺全面体检 ($250 SGD)
+                <div class="pt-4">
+                    <a href="#audit-form" class="inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-950 px-8 py-4 rounded-sm font-bold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] group">
+                        <span class="lang-en">Apply for Full Store Audit ($250)</span>
+                        <span class="lang-zh">申请店铺全面体检 ($250 SGD)</span>
                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
             </div>
             
-            <!-- Hero Data Highlight Card -->
-            <div class="hidden lg:block lg:w-1/3 slide-up delay-200">
+            <div class="hidden lg:block lg:w-[40%] slide-up delay-200 mt-12 lg:mt-0">
                 <div class="bg-navy-900/60 backdrop-blur-xl p-8 rounded-xl border border-white/10 shadow-2xl relative">
                     <div class="absolute -top-3 -right-3 w-12 h-12 bg-gold-500 text-navy-950 flex items-center justify-center rounded-sm font-black text-xl rotate-12 shadow-lg">ROI</div>
-                    <h3 class="text-xl font-bold mb-6 text-white border-b border-white/10 pb-4">拒绝纸上谈兵</h3>
-                    <ul class="space-y-5 text-slate-300 text-sm">
+                    
+                    <h3 class="text-xl font-bold mb-6 text-white border-b border-white/10 pb-4">
+                        <span class="lang-en">Data-Driven Growth, No Fluff</span>
+                        <span class="lang-zh">拒绝纸上谈兵，用数据驱动增长</span>
+                    </h3>
+                    
+                    <ul class="space-y-6 text-slate-300 text-sm">
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong class="text-white">精准定位</strong>：秒懂你的 CR 暴跌原因与流量漏斗问题。</span>
+                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <span class="lang-en"><strong class="text-white text-base">Traffic & Acquisition:</strong> Overcome low impressions and new customer acquisition hurdles with precision ad campaigns.</span>
+                            <span class="lang-zh"><strong class="text-white text-base">流量与拉新：</strong>解决店铺无曝光、新客获取难的问题，精准广告投放撬动增量。</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong class="text-white">系统优化</strong>：多平台矩阵联动与 ERP 订单流转打通。</span>
+                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            <span class="lang-en"><strong class="text-white text-base">Conversion & Retention:</strong> Diagnose the "high traffic, no sales" funnel and boost Average Order Value (AOV).</span>
+                            <span class="lang-zh"><strong class="text-white text-base">转化与复购：</strong>针对“有流量无转化”及“复购率低”进行漏斗诊断，提升客单价。</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span><strong class="text-white">AI 降本增效</strong>：告别昂贵美工，用 AI 打造高点击率视觉。</span>
+                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="lang-en"><strong class="text-white text-base">Systems & Efficiency:</strong> Integrate multi-platform operations with ERPs and implement AI tools for cost reduction.</span>
+                            <span class="lang-zh"><strong class="text-white text-base">系统与效率：</strong>打通多平台矩阵与 ERP 流转，用 AI 工具实现降本增效。</span>
                         </li>
                     </ul>
                 </div>
@@ -126,43 +154,58 @@
 
     <section id="why-me" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20 slide-up">
+            <div class="text-center max-w-3xl mx-auto mb-20">
                 <h2 class="text-sm font-bold tracking-widest text-gold-600 uppercase mb-3">The "Why Me"</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-navy-950 mb-6">用真实操盘数据为你护航</h3>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-navy-950 mb-6">
+                    <span class="lang-en">My Track Record: Real Data Validating My Strategies</span>
+                    <span class="lang-zh">我的实战底气：用百万级操盘数据为你护航</span>
+                </h3>
                 <p class="text-slate-600 text-lg">
-                    我不是纯理论派讲师。以下是我在一线厮杀、真金白银砸出来的实战结果。
+                    <span class="lang-en">I am not a theoretical guru. Below are the battle-tested results achieved through real budgets and front-line execution.</span>
+                    <span class="lang-zh">我不是纯理论派讲师。以下是我在一线厮杀、真金白银砸出来的实战结果。</span>
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-20">
-                <!-- Card 1 -->
                 <div class="bg-slate-50 p-10 rounded-xl border border-slate-200 hover:shadow-xl transition-shadow group">
-                    <div class="text-5xl lg:text-6xl font-black text-navy-950 mb-4 group-hover:scale-105 transition-transform origin-left">
-                        6.3M<span class="text-gold-500 text-4xl">+</span>
+                    <div class="text-5xl font-black text-navy-950 mb-2 group-hover:scale-105 transition-transform origin-left">
+                        10X <span class="text-gold-500 text-3xl lang-en">Growth</span><span class="text-gold-500 text-3xl lang-zh">增长</span>
                     </div>
-                    <h4 class="text-xl font-bold text-navy-900 mb-3">实现 5 倍规模跨越</h4>
+                    <h4 class="text-xl font-bold text-navy-900 mb-3">
+                        <span class="lang-en">Scale & Cross-Category</span>
+                        <span class="lang-zh">规模跨越与类目通杀</span>
+                    </h4>
                     <p class="text-slate-600 leading-relaxed text-sm">
-                        在 2025 年管理超 630 万新币电商盘子。曾接手停滞店铺，3个月内打破天花板，整体销售额暴增 35%。通杀宠物、3C、母婴及医疗类目。
+                        <span class="lang-en">Scaled revenue from $630K to $6.3M SGD in 4 years. Turned around a stagnant project to achieve a <strong>35%</strong> revenue surge within 3 months. Deep expertise in Pets, Electronics, Baby/Toys, and Healthcare categories.</span>
+                        <span class="lang-zh">4 年时间将业绩从 63 万带到 630 万新币。曾接手停滞项目，仅用 3 个月即实现全盘销售额 <strong>35%</strong> 的逆势暴增。深谙宠物用品、3C数码、母婴玩具及医疗等多类目的底层逻辑。</span>
                     </p>
                 </div>
-                <!-- Card 2 -->
+                
                 <div class="bg-slate-50 p-10 rounded-xl border border-slate-200 hover:shadow-xl transition-shadow group">
-                    <div class="text-5xl lg:text-6xl font-black text-navy-950 mb-4 group-hover:scale-105 transition-transform origin-left">
-                        30<span class="text-gold-500 text-4xl">%</span>
+                    <div class="text-5xl font-black text-navy-950 mb-2 group-hover:scale-105 transition-transform origin-left">
+                        30<span class="text-gold-500 text-4xl">%</span> <span class="text-2xl lang-en">CR</span><span class="text-2xl lang-zh">转化率</span>
                     </div>
-                    <h4 class="text-xl font-bold text-navy-900 mb-3">极致转化与大促霸榜</h4>
+                    <h4 class="text-xl font-bold text-navy-900 mb-3">
+                        <span class="lang-en">Mega Campaigns & Ads</span>
+                        <span class="lang-zh">大促霸榜与精准广告</span>
+                    </h4>
                     <p class="text-slate-600 leading-relaxed text-sm">
-                        日常转化率（CR）稳定在 8%~10%，大促期间飙升至 30%。多次带领品牌大促霸榜，深谙如何与平台 KAM 撬动独家流量资源。
+                        <span class="lang-en">Consistently led brands to Top 1 during Mega Campaigns. Maintained a steady 8-10% daily Conversion Rate, peaking at <strong>30%</strong>. Expert in ad architecture restructuring to maximize ROI and budget efficiency.</span>
+                        <span class="lang-zh">多次带领品牌在大促稳居类目第一。日常转化率稳定在 8%~10%，大促最高飙升至 <strong>30%</strong>。精通广告架构重组，持续优化 ROI，让每一分预算都花在刀刃上。</span>
                     </p>
                 </div>
-                <!-- Card 3 -->
+                
                 <div class="bg-slate-50 p-10 rounded-xl border border-slate-200 hover:shadow-xl transition-shadow group">
-                    <div class="text-5xl lg:text-6xl font-black text-navy-950 mb-4 group-hover:scale-105 transition-transform origin-left">
-                        AI<span class="text-gold-500 text-4xl">+</span>
+                    <div class="text-5xl font-black text-navy-950 mb-2 group-hover:scale-105 transition-transform origin-left">
+                        AI <span class="text-gold-500 text-3xl">+ SOP</span>
                     </div>
-                    <h4 class="text-xl font-bold text-navy-900 mb-3">系统搭建与 AI 赋能</h4>
+                    <h4 class="text-xl font-bold text-navy-900 mb-3">
+                        <span class="lang-en">Automated Operations</span>
+                        <span class="lang-zh">自动化运营体系</span>
+                    </h4>
                     <p class="text-slate-600 leading-relaxed text-sm">
-                        专治烂摊子。曾搭建 10+ 人团队 SOP，精准对接 ERP 提升履约率。率先落地 AI 客服与直播引流，实现 100% 极速回复。
+                        <span class="lang-en">Pioneered AI livestreaming for traffic acquisition and implemented AI customer service for a <strong>100% response rate</strong>. Managed 10+ member teams, built internal SOPs, and integrated ERPs to resolve inventory challenges.</span>
+                        <span class="lang-zh">率先落地 AI 直播引流，并运用 AI 客服实现 <strong>100% 极速回复率</strong>。曾管理 10+ 人团队搭建内部 SOP，无缝对接 ERP 系统，彻底解决履约与库存难题。</span>
                     </p>
                 </div>
             </div>
@@ -171,8 +214,14 @@
                 <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, #eab308 0, #eab308 1px, transparent 1px, transparent 10px);"></div>
                 
                 <div class="relative z-10 md:w-1/3 text-center md:text-left">
-                    <h4 class="text-2xl font-bold text-white mb-2">行业权威认可</h4>
-                    <p class="text-slate-400 text-sm">带领知名品牌赢得多项平台顶级荣誉</p>
+                    <h4 class="text-2xl font-bold text-white mb-2">
+                        <span class="lang-en">Industry Recognition</span>
+                        <span class="lang-zh">行业权威认可</span>
+                    </h4>
+                    <p class="text-slate-400 text-sm">
+                        <span class="lang-en">Led brands to secure top platform awards.</span>
+                        <span class="lang-zh">带领品牌赢得多项平台官方荣誉</span>
+                    </p>
                 </div>
                 
                 <div class="relative z-10 md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4">
@@ -201,36 +250,55 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 
-                <!-- Left Details -->
                 <div class="lg:w-1/2 space-y-6">
                     <h2 class="text-sm font-bold tracking-widest text-gold-600 uppercase mb-1">The Offer</h2>
                     <h3 class="text-3xl md:text-4xl font-extrabold text-navy-950">
-                        $250 新币，买一份绝对落地的“增长处方”
+                        <span class="lang-en">$250 SGD, For a Highly Actionable Growth Prescription</span>
+                        <span class="lang-zh">$250 新币，买一份绝对落地的“增长处方”</span>
                     </h3>
                     <p class="text-lg text-slate-600 font-medium pb-6 border-b border-slate-300">
-                        这不是一份充满行业废话的 PPT。我会用挖掘百万业绩的数据敏感度，深入你的店铺后台，为你揪出每天都在亏钱的漏水点。
+                        <span class="lang-en">I will guide you through a 3-step consulting flow to identify bottlenecks and provide an actionable roadmap. No industry fluff.</span>
+                        <span class="lang-zh">我将通过高效的 3 步诊断流程，为你梳理出核心价值与行动路线，拒绝任何行业废话。</span>
                     </p>
                     
                     <div class="space-y-8 pt-4">
                         <div class="flex gap-5">
                             <div class="w-12 h-12 rounded-sm bg-navy-950 text-gold-500 flex items-center justify-center font-bold text-xl shrink-0 shadow-md">1</div>
                             <div>
-                                <h4 class="text-lg font-bold text-navy-900 mb-2">红绿灯健康检查</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed">全面透视你的页面视觉、转化漏斗和广告结构。用红黄绿直观标出致命问题与优势所在，让你一眼看清现状。</p>
+                                <h4 class="text-lg font-bold text-navy-900 mb-2">
+                                    <span class="lang-en">Initial Discovery Call</span>
+                                    <span class="lang-zh">前期：深度摸底会议</span>
+                                </h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    <span class="lang-en">A 1-on-1 video call to deeply understand your store's context, specific pain points, and current team capabilities before diving into the data.</span>
+                                    <span class="lang-zh">一对一线上会议，在调取数据前，彻底挖掘店铺当前的真实运营痛点、历史操作以及团队配合情况。</span>
+                                </p>
                             </div>
                         </div>
                         <div class="flex gap-5">
                             <div class="w-12 h-12 rounded-sm bg-navy-950 text-gold-500 flex items-center justify-center font-bold text-xl shrink-0 shadow-md">2</div>
                             <div>
-                                <h4 class="text-lg font-bold text-navy-900 mb-2">30 天 Quick Wins 行动指南</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed">不谈宏大的概念。交付定制化 Google Template 清单，梳理出 3 条无需大量预算、你的团队立刻就能执行并看到效果的改善动作。</p>
+                                <h4 class="text-lg font-bold text-navy-900 mb-2">
+                                    <span class="lang-en">Audit Report & Quick Wins Blueprint</span>
+                                    <span class="lang-zh">中期：全面体检与行动指南交付</span>
+                                </h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    <span class="lang-en">Within 3-5 days, receive a comprehensive analysis of your funnel/ads, visually mapping out where you are bleeding money, alongside 3 actionable Quick Wins your team can execute immediately.</span>
+                                    <span class="lang-zh">3-5 个工作日内交付数据体检报告，精准标出亏钱漏水点，并附带 3 条无需大量预算、团队可立即执行的 Quick Wins 改善动作。</span>
+                                </p>
                             </div>
                         </div>
                         <div class="flex gap-5">
                             <div class="w-12 h-12 rounded-sm bg-navy-950 text-gold-500 flex items-center justify-center font-bold text-xl shrink-0 shadow-md">3</div>
                             <div>
-                                <h4 class="text-lg font-bold text-navy-900 mb-2">60 分钟深度线上复盘会</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed">一对一视频会议，深度解读诊断报告。解答你在实际运营、多平台分配和 ERP 配合中遇到的任何疑难杂症。</p>
+                                <h4 class="text-lg font-bold text-navy-900 mb-2">
+                                    <span class="lang-en">Strategy Review Call</span>
+                                    <span class="lang-zh">后期：行动指南复盘会</span>
+                                </h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    <span class="lang-en">A final 1-on-1 call to walk through the Action Plan, answer execution questions, and optionally discuss long-term Retainer Consulting if you need ongoing support.</span>
+                                    <span class="lang-zh">第二次一对一视频会议，深度解读行动指南，解答实操疑问。并在确保团队能顺利落地的前提下，视您的需求评估后续长线合作。</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -238,33 +306,37 @@
 
                 <div class="lg:w-1/2 w-full">
                     <div class="bg-white p-10 md:p-14 rounded-2xl shadow-xl border border-slate-200 text-center relative overflow-hidden">
-                        <!-- Decorative Ribbon -->
-                        <div class="absolute top-6 right-[-40px] bg-gold-500 text-navy-950 font-bold py-1 px-12 rotate-45 text-sm shadow-md">
-                            高投资回报
-                        </div>
+                        <h4 class="text-xl font-bold text-navy-900 mb-2">
+                            <span class="lang-en">Full Store Audit Service</span>
+                            <span class="lang-zh">店铺全面诊断服务</span>
+                        </h4>
+                        <p class="text-slate-500 text-sm mb-6">
+                            <span class="lang-en">One-time fee. No hidden charges.</span>
+                            <span class="lang-zh">一次性收费，无任何隐形增项。</span>
+                        </p>
                         
-                        <h4 class="text-xl font-bold text-navy-900 mb-2">店铺全面诊断服务</h4>
-                        <p class="text-slate-500 text-sm mb-8">一次性收费，无任何隐形增项。</p>
-                        
-                        <div class="text-6xl font-black text-navy-950 mb-8 flex items-center justify-center gap-2">
+                        <div class="text-6xl font-black text-navy-950 mb-4 flex items-center justify-center gap-2">
                             <span class="text-3xl text-slate-400 font-medium translate-y-2">$</span>250 <span class="text-xl text-slate-400 font-medium translate-y-3">SGD</span>
                         </div>
 
-                        <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 mb-8 text-left">
-                            <div class="flex items-start gap-3 mb-2">
-                                <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-sm font-semibold text-navy-900">结果承诺</span>
-                            </div>
-                            <p class="text-xs text-slate-600 pl-8">在团队严格执行方案的前提下，必定在 3 个月内看到核心指标的实质性改善。</p>
+                        <!-- Upsell Banner -->
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-8 text-center shadow-sm">
+                            <span class="text-sm font-semibold text-amber-800">⭐ <span class="lang-en">Zero-Risk Guarantee:</span><span class="lang-zh">零风险承诺：</span></span>
+                            <span class="text-sm text-amber-700">
+                                <span class="lang-en">Audit fee is fully deductible if you proceed with Monthly Retainer Consulting later.</span>
+                                <span class="lang-zh">若后续签约月度陪跑顾问，本次诊断费可全额抵扣。</span>
+                            </span>
                         </div>
                         
                         <a href="#audit-form" class="block w-full py-4 bg-navy-950 hover:bg-navy-800 text-white rounded-sm font-bold text-lg transition-all shadow-md hover:shadow-xl">
-                            立即锁定诊断名额
+                            <span class="lang-en">Secure Your Audit Slot</span>
+                            <span class="lang-zh">立即锁定诊断名额</span>
                         </a>
                         
                         <p class="text-xs text-slate-400 mt-5 flex items-center justify-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                            严格遵守商业机密保密协议 (NDA)
+                            <span class="lang-en">Strict adherence to Non-Disclosure Agreements (NDA)</span>
+                            <span class="lang-zh">严格遵守商业机密保密协议 (NDA)</span>
                         </p>
                     </div>
                 </div>
@@ -275,63 +347,137 @@
     <section id="audit-form" class="py-24 bg-white relative">
         <div class="max-w-4xl mx-auto px-6">
             <div class="bg-navy-950 p-8 md:p-14 rounded-2xl shadow-2xl relative overflow-hidden">
-                <!-- Gold accent border top -->
                 <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-gold-400 to-gold-600"></div>
                 
-                <!-- Success State (Hidden by default) -->
-                <div id="success-message" class="hidden text-center py-12 px-4 fade-in">
-                    <div class="w-20 h-20 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-gold-500/50">
-                        <svg class="w-10 h-10 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <!-- Success Message Container -->
+                <div id="form-message-box" class="hidden text-center py-12 px-4 fade-in">
+                    <div id="success-icon" class="hidden w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/50">
+                        <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">申请已成功提交！</h3>
-                    <p class="text-lg text-slate-300 max-w-lg mx-auto">
-                        感谢您的信任。我将先审阅您的店铺情况，并在 24 小时内通过 WhatsApp 与您联系确认是否接单及后续流程。
-                    </p>
+                    <div id="error-icon" class="hidden w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-red-500/50">
+                        <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </div>
+                    <h3 id="message-title" class="text-3xl font-bold text-white mb-4">Message Title</h3>
+                    <p id="message-desc" class="text-lg text-slate-300 max-w-lg mx-auto">Message description.</p>
+                    <button id="reset-form-btn" class="hidden mt-8 text-gold-500 hover:text-white underline text-sm">
+                        <span class="lang-en">Go back to form</span><span class="lang-zh">返回重新填写</span>
+                    </button>
                 </div>
 
-                <!-- The Form -->
                 <div id="lead-form-container">
                     <div class="text-center mb-10">
-                        <h2 class="text-3xl font-extrabold text-white mb-3">准备好突破瓶颈了吗？</h2>
-                        <p class="text-slate-400">请花 1 分钟填写简表。为保证服务质量，每月仅接 3-5 个诊断案子。</p>
+                        <h2 class="text-3xl font-extrabold text-white mb-3">
+                            <span class="lang-en">Ready to break the bottleneck?</span>
+                            <span class="lang-zh">准备好突破瓶颈了吗？</span>
+                        </h2>
+                        <p class="text-slate-400">
+                            <span class="lang-en">Please take 1 minute to fill out this form. I only take 3-5 audits per month to ensure quality.</span>
+                            <span class="lang-zh">请花 1 分钟填写基本信息。为保证服务质量，每月仅接 3-5 个诊断案子。</span>
+                        </p>
                     </div>
                     
                     <form id="contactForm" class="space-y-6" action="https://formspree.io/f/xkjovlrn" method="POST">
+                        
+                        <!-- Contact Info -->
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-semibold text-slate-300 mb-2">您的称呼 / 职位</label>
-                                <input type="text" id="name" name="Client Name" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="e.g. 陈先生，创始人">
+                                <label for="name" class="block text-sm font-semibold text-slate-300 mb-2">
+                                    <span class="lang-en">Name</span><span class="lang-zh">您的称呼</span>
+                                </label>
+                                <input type="text" id="name" name="Client Name" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" data-en-placeholder="e.g. Mr. Tan" data-zh-placeholder="例如：陈先生" placeholder="e.g. Mr. Tan">
                             </div>
-
                             <div>
-                                <label for="whatsapp" class="block text-sm font-semibold text-slate-300 mb-2">WhatsApp 号码</label>
-                                <input type="tel" id="whatsapp" name="WhatsApp" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="+65 8xxx xxxx">
+                                <label for="title" class="block text-sm font-semibold text-slate-300 mb-2">
+                                    <span class="lang-en">Job Title</span><span class="lang-zh">您的职位</span>
+                                </label>
+                                <input type="text" id="title" name="Job Title" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" data-en-placeholder="e.g. Founder / Ops Director" data-zh-placeholder="例如：创始人 / 运营总监" placeholder="e.g. Founder / Ops Director">
+                            </div>
+                            <div>
+                                <label for="whatsapp" class="block text-sm font-semibold text-slate-300 mb-2">
+                                    <span class="lang-en">WhatsApp Number</span><span class="lang-zh">WhatsApp 号码</span>
+                                </label>
+                                <input type="tel" id="whatsapp" name="WhatsApp" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" data-en-placeholder="+65 8xxx xxxx" data-zh-placeholder="+65 8xxx xxxx" placeholder="+65 8xxx xxxx">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-slate-300 mb-2">
+                                    <span class="lang-en">Work Email</span><span class="lang-zh">工作邮箱</span>
+                                </label>
+                                <input type="email" id="email" name="Email" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" data-en-placeholder="For invoice and report delivery" data-zh-placeholder="用于接收诊断报告及账单" placeholder="For invoice and report delivery">
                             </div>
                         </div>
 
+                        <hr class="border-slate-800 my-4">
+
+                        <!-- Business Qualification -->
                         <div>
-                            <label for="storeUrl" class="block text-sm font-semibold text-slate-300 mb-2">核心店铺链接</label>
-                            <input type="url" id="storeUrl" name="Store URL" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" placeholder="https://shopee.sg/yourstore">
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">
+                                <span class="lang-en">Main Store URL</span><span class="lang-zh">主要店铺链接</span>
+                            </label>
+                            <div id="urls-container" class="space-y-3">
+                                <input type="url" name="Store URL 1" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition" data-en-placeholder="e.g. https://shopee.sg/yourstore" data-zh-placeholder="例如：https://shopee.sg/yourstore" placeholder="e.g. https://shopee.sg/yourstore">
+                            </div>
+                            <button type="button" id="add-url-btn" class="mt-2 text-sm text-gold-500 hover:text-gold-400 font-medium flex items-center gap-1 transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                <span class="lang-en">Add more store URLs</span><span class="lang-zh">添加更多店铺链接</span>
+                            </button>
                         </div>
 
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="revenue" class="block text-sm font-semibold text-slate-300 mb-2">
+                                    <span class="lang-en">Average Monthly Revenue Range?</span><span class="lang-zh">平均月销售额范围？</span>
+                                </label>
+                                <select id="revenue" name="Monthly Revenue" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white focus:ring-0 transition appearance-none">
+                                    <option value="" disabled selected class="text-slate-500" data-en-text="Please select..." data-zh-text="请选择...">Please select...</option>
+                                    <option value="0-10k" class="text-black" data-en-text="$0 - $10,000 SGD (Startup)" data-zh-text="$0 - $10,000 SGD (起步阶段)">$0 - $10,000 SGD (Startup)</option>
+                                    <option value="10k-50k" class="text-black" data-en-text="$10,000 - $50,000 SGD (Growth)" data-zh-text="$10,000 - $50,000 SGD (成长阶段)">$10,000 - $50,000 SGD (Growth)</option>
+                                    <option value="50k-150k" class="text-black" data-en-text="$50,000 - $150,000 SGD (Scaling)" data-zh-text="$50,000 - $150,000 SGD (规模阶段)">$50,000 - $150,000 SGD (Scaling)</option>
+                                    <option value="150k+" class="text-black" data-en-text="$150,000+ SGD (Breakthrough)" data-zh-text="$150,000+ SGD (突破阶段)">$150,000+ SGD (Breakthrough)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="ads" class="block text-sm font-semibold text-slate-300 mb-2">
+                                    <span class="lang-en">Currently using platform ads?</span><span class="lang-zh">目前是否有使用平台广告？</span>
+                                </label>
+                                <select id="ads" name="Ads Usage" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white focus:ring-0 transition appearance-none">
+                                    <option value="" disabled selected class="text-slate-500" data-en-text="Please select..." data-zh-text="请选择...">Please select...</option>
+                                    <option value="High Spend, Low ROI" class="text-black" data-en-text="Yes, high spend but poor ROI" data-zh-text="是，且花费很大，但 ROI 不理想">Yes, high spend but poor ROI</option>
+                                    <option value="Casual Spend, Not Tracked" class="text-black" data-en-text="Yes, casually spending, not tracking ROI" data-zh-text="是，随便投投，没仔细算过账">Yes, casually spending, not tracking ROI</option>
+                                    <option value="Organic Only" class="text-black" data-en-text="No, mostly relying on organic traffic" data-zh-text="否，主要靠自然流量">No, mostly relying on organic traffic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Pain Points -->
                         <div>
-                            <label for="challenge" class="block text-sm font-semibold text-slate-300 mb-2">目前急需解决的核心痛点</label>
+                            <label for="challenge" class="block text-sm font-semibold text-slate-300 mb-2">
+                                <span class="lang-en">Biggest current pain point?</span><span class="lang-zh">目前最大的痛点是？</span>
+                            </label>
                             <select id="challenge" name="Main Challenge" required class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white focus:ring-0 transition appearance-none">
-                                <option value="" disabled selected class="text-slate-500">请选择最大瓶颈...</option>
-                                <option value="CR_Traffic" class="text-black">转化率低迷，流量无法变现</option>
-                                <option value="Ads_ROI" class="text-black">广告花费高昂，ROI 持续亏损</option>
-                                <option value="Operations_ERP" class="text-black">多平台管理混乱，ERP/库存频频出错</option>
-                                <option value="Scale_New" class="text-black">遇到业绩天花板，需要拓展新玩法 (AI/直播)</option>
-                                <option value="Other" class="text-black">全盘诊断需求</option>
+                                <option value="" disabled selected class="text-slate-500" data-en-text="Select your core issue..." data-zh-text="请选择您的核心问题...">Select your core issue...</option>
+                                <option value="Low Traffic" class="text-black" data-en-text="Extremely low traffic / No impressions" data-zh-text="店铺流量极低，没有曝光">Extremely low traffic / No impressions</option>
+                                <option value="Low Conversion" class="text-black" data-en-text="Have traffic, but poor conversion rate" data-zh-text="有流量但不转化，转化率差">Have traffic, but poor conversion rate</option>
+                                <option value="Ad Losses" class="text-black" data-en-text="High ad costs / Negative ROI" data-zh-text="广告费用高昂，ROI 持续亏损">High ad costs / Negative ROI</option>
+                                <option value="ERP / Multi-platform Mess" class="text-black" data-en-text="Multi-platform operations & ERP/Inventory mess" data-zh-text="多平台运营混乱，ERP与库存管理出问题">Multi-platform operations & ERP/Inventory mess</option>
+                                <option value="Growth Ceiling" class="text-black" data-en-text="Hit a revenue ceiling, need new traffic strategies" data-zh-text="业绩遇到天花板，想开拓新流量玩法">Hit a revenue ceiling, need new traffic strategies</option>
                             </select>
                         </div>
 
+                        <div>
+                            <label for="notes" class="block text-sm font-semibold text-slate-300 mb-2">
+                                <span class="lang-en">Additional Notes (Optional)</span><span class="lang-zh">补充说明 (选填)</span>
+                            </label>
+                            <textarea id="notes" name="Additional Notes" rows="3" class="w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition resize-none" data-en-placeholder="Briefly describe specific issues you want me to focus on. The more details you provide, the better I can assist you." data-zh-placeholder="请简述您希望我特别关注的问题，或您店铺的其他背景信息。您写得越详细，我能帮到您的就越多。" placeholder="Briefly describe specific issues you want me to focus on. The more details you provide, the better I can assist you."></textarea>
+                        </div>
+
                         <div class="pt-4">
-                            <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-lg py-4 rounded-sm transition-all shadow-[0_0_15px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)]">
-                                提交审核 ($250 SGD)
+                            <button type="submit" id="submit-btn-text" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-lg py-4 rounded-sm transition-all shadow-[0_0_15px_rgba(234,179,8,0.2)] hover:shadow-[0_0_25px_rgba(234,179,8,0.4)]">
+                                <span class="lang-en">Submit Application ($250 SGD)</span>
+                                <span class="lang-zh">提交申请 ($250 SGD)</span>
                             </button>
                             <p class="text-xs text-center text-slate-400 mt-4">
-                                * 现阶段<strong class="text-white">无需支付</strong>任何费用。只有在确认我能为您带来实质性价值后，才会发送正式账单。
+                                <span class="lang-en">* <strong>No payment required right now.</strong> I will review your store first. If I can add value, we will schedule the initial discovery call and I will send the invoice.</span>
+                                <span class="lang-zh">* 现阶段<strong class="text-white">无需支付</strong>任何费用。我会先审阅您的店铺情况，确认能为您带来实质性价值后，才会发送正式账单及安排初始会议。</span>
                             </p>
                         </div>
                     </form>
@@ -342,24 +488,17 @@
 
     <footer class="bg-navy-950 text-slate-500 py-12 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-xl font-extrabold text-white tracking-tight opacity-80">
+            <div class="text-xl font-black text-white tracking-tight opacity-80">
                 <span class="text-gold-500">Ecom</span>Growth.
             </div>
             <div class="text-sm">
-                &copy; <span id="year"></span> 独立电商增长顾问. Based in Singapore.
-            </div>
-            <div class="flex gap-4">
-                <!-- Placeholder for LinkedIn or email -->
-                <a href="#" class="hover:text-gold-500 transition">
-                    <span class="sr-only">LinkedIn</span>
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
+                &copy; <span id="year"></span> <span class="lang-en">Independent E-Commerce Strategy Consultant.</span><span class="lang-zh">独立电商战略顾问.</span> Based in Singapore.
             </div>
         </div>
     </footer>
 
     <script>
-        // Update Year
+        // Set Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Navbar scroll effect
@@ -374,63 +513,129 @@
             }
         });
 
-        // 优雅处理表单提交 (AJAX 无刷新提交到 Formspree)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // 阻止表单默认的跳转行为
+        // Dynamic URL Fields logic
+        let urlCount = 1;
+        document.getElementById('add-url-btn').addEventListener('click', function() {
+            urlCount++;
+            const container = document.getElementById('urls-container');
+            const input = document.createElement('input');
+            input.type = 'url';
+            input.name = 'Store URL ' + urlCount;
+            input.className = 'w-full px-4 py-3 rounded-sm border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 focus:ring-0 transition slide-up';
+            
+            const currentLang = document.documentElement.lang;
+            input.setAttribute('data-en-placeholder', 'Additional Store URL (Optional)');
+            input.setAttribute('data-zh-placeholder', '其他店铺链接 (选填)');
+            input.placeholder = currentLang === 'en' ? 'Additional Store URL (Optional)' : '其他店铺链接 (选填)';
+            
+            container.appendChild(input);
+        });
 
-            // 获取表单元素和数据
+        // Language Switcher Logic
+        function switchLang(lang) {
+            document.documentElement.lang = lang;
+            
+            // Update button UI
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+            
+            if (lang === 'en') {
+                btnEn.className = "text-sm font-bold text-gold-500 hover:text-gold-400 transition";
+                btnZh.className = "text-sm font-medium text-slate-400 hover:text-white transition";
+            } else {
+                btnZh.className = "text-sm font-bold text-gold-500 hover:text-gold-400 transition";
+                btnEn.className = "text-sm font-medium text-slate-400 hover:text-white transition";
+            }
+
+            // Update Input Placeholders
+            document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+                el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
+            });
+
+            // Update Select Options Text
+            document.querySelectorAll('option[data-en-text]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}-text`);
+            });
+        }
+
+        // Initialize default language data
+        switchLang('en');
+
+
+        // Form submission via AJAX to Formspree
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
             const form = e.target;
             const data = new FormData(form);
             const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonContent = submitButton.innerHTML;
             
-            // 提交时改变按钮状态，防止重复点击
-            const originalButtonText = submitButton.innerHTML;
-            submitButton.innerHTML = '正在提交...';
+            const messageBox = document.getElementById('form-message-box');
+            const formContainer = document.getElementById('lead-form-container');
+            const successIcon = document.getElementById('success-icon');
+            const errorIcon = document.getElementById('error-icon');
+            const title = document.getElementById('message-title');
+            const desc = document.getElementById('message-desc');
+            const resetBtn = document.getElementById('reset-form-btn');
+            const isEn = document.documentElement.lang === 'en';
+            
+            // Disable button
+            submitButton.innerHTML = isEn ? 'Submitting...' : '正在提交...';
             submitButton.disabled = true;
             submitButton.classList.add('opacity-75', 'cursor-not-allowed');
 
-            // 使用 fetch API 将数据发送到 Formspree
             fetch(form.action, {
                 method: form.method,
                 body: data,
-                headers: {
-                    'Accept': 'application/json' // 告诉 Formspree 我们希望返回 JSON，这样就不会跳转
-                }
+                headers: { 'Accept': 'application/json' }
             })
             .then(response => {
+                formContainer.style.display = 'none';
+                messageBox.classList.remove('hidden');
+                
                 if (response.ok) {
-                    // 提交成功：隐藏表单，显示成功提示
-                    const formContainer = document.getElementById('lead-form-container');
-                    const successMessage = document.getElementById('success-message');
-                    
-                    formContainer.style.display = 'none';
-                    successMessage.classList.remove('hidden');
-                    
-                    // 滚动到提示信息
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // 可选：清空表单（以防客户刷新页面后仍有数据）
+                    successIcon.classList.remove('hidden');
+                    errorIcon.classList.add('hidden');
+                    title.innerText = isEn ? "Application Submitted Successfully!" : "申请已成功提交！";
+                    title.className = "text-3xl font-bold text-white mb-4";
+                    desc.innerText = isEn ? "Thank you for your trust. I will review your store details and contact you via WhatsApp/Email within 24 hours to confirm the next steps." : "感谢您的信任。我将先审阅您的店铺情况，并在 24 小时内通过 WhatsApp/Email 与您联系确认后续流程。";
+                    resetBtn.classList.add('hidden');
                     form.reset();
                 } else {
-                    // 处理 Formspree 返回的错误
                     response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert("Oops! 提交时遇到了问题，请稍后再试。");
-                        }
-                    })
+                        successIcon.classList.add('hidden');
+                        errorIcon.classList.remove('hidden');
+                        title.innerText = isEn ? "Submission Failed" : "提交失败";
+                        title.className = "text-3xl font-bold text-red-500 mb-4";
+                        resetBtn.classList.remove('hidden');
+                        desc.innerText = isEn ? "Oops! There was a problem submitting your form. Please check your inputs and try again." : "Oops! 提交时遇到了问题，请检查资料格式后重试。";
+                    });
                 }
+                messageBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .catch(error => {
-                alert("Oops! 提交时遇到了网络问题，请检查您的连接。");
+                formContainer.style.display = 'none';
+                messageBox.classList.remove('hidden');
+                successIcon.classList.add('hidden');
+                errorIcon.classList.remove('hidden');
+                title.innerText = isEn ? "Network Error" : "网络错误";
+                title.className = "text-3xl font-bold text-red-500 mb-4";
+                desc.innerText = isEn ? "There was a network error. Please check your connection and try again." : "提交时遇到了网络连接问题，请检查您的网络后重试。";
+                resetBtn.classList.remove('hidden');
+                messageBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .finally(() => {
-                // 恢复按钮状态（如果是错误情况，或者客户返回上一页）
-                submitButton.innerHTML = originalButtonText;
+                submitButton.innerHTML = originalButtonContent;
                 submitButton.disabled = false;
                 submitButton.classList.remove('opacity-75', 'cursor-not-allowed');
             });
+            
+            resetBtn.onclick = function() {
+                messageBox.classList.add('hidden');
+                formContainer.style.display = 'block';
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         });
     </script>
 </body>
